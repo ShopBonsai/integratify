@@ -1,6 +1,6 @@
 {
   "name": "integratify",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Make integration testing easy",
   "main": "build/index.js",
   "types": "build/index.d.ts",

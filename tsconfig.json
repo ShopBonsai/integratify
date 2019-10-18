@@ -17,6 +17,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
 
+    "strictNullChecks": true,
+
     "paths": {
       "*": [
         "node_modules/*",

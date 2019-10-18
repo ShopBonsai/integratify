@@ -75,7 +75,9 @@ export const runRouteValidation =
     log(`Method: ${type}\nStatus: ${status}\nPayload:\n ${JSON.stringify(options.payload, null, 2)}\nResponse:\n ${JSON.stringify(body, null, 2)}`);
 
     // Check HTTP status
-    expect(status).toEqual(httpStatus);
+    if (status) {
+      expect(status).toEqual(httpStatus);
+    }
 
     // Optional length
     if (options.length) {

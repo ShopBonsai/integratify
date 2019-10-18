@@ -18,19 +18,21 @@
     "git:clean": "git branch --merged | egrep -v \"(^\\*|master|staging|develop)\" | xargs git branch -d",
     "git:clean-remote": "git remote prune origin"
   },
-  "devDependencies": {
+  "dependencies": {
     "@hapi/joi": "~15.1.1",
+    "jest": "~24.9.0",
+    "supertest": "~4.0.2"
+  },
+  "devDependencies": {
     "@types/hapi__joi": "~15.0.4",
     "@types/jest": "~24.0.19",
-    "jest": "~24.9.0",
-    "supertest": "~4.0.2",
     "pre-commit": "~1.2.2",
     "rimraf": "~3.0.0",
     "np": "^5.0.3",
-    "ts-jest": "~24.1.0",
     "tslint": "~5.20.0",
     "tslint-config-airbnb": "~5.11.2",
-    "typescript": "~3.6.3"
+    "typescript": "~3.6.3",
+    "ts-jest": "~24.1.0"
   },
   "precommit": [
     "lint",

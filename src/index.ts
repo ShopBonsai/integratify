@@ -3,4 +3,4 @@ export {
   setConfiguration,
   testRoute,
   validateSchema,
-} from './utils'
+} from './utils';

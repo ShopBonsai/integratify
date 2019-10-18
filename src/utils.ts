@@ -6,7 +6,7 @@ import { IIntegrationOptions, IRequestType, ITestResponse, IGlobalConfiguration 
 const globalConfiguration: IGlobalConfiguration = {
   app: null,
   dataKey: 'data',
-}
+};
 
 /**
  * Set global configuration
@@ -15,7 +15,7 @@ const globalConfiguration: IGlobalConfiguration = {
  */
 export const setConfiguration = (options: IGlobalConfiguration) => {
   Object.assign(globalConfiguration, options);
-}
+};
 
 // Log requests during integration tests
 const DEBUG_MODE_ENABLED = process.argv.includes('--debug');

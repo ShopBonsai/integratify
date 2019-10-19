@@ -1,6 +1,6 @@
 # Integratify
 
-Make Node.js integrationtesting easy!
+Make Node.js integration testing easy!
 
 [![npm version](https://badge.fury.io/js/integratify.svg)](https://badge.fury.io/js/integratify)
 [![Dependencies](https://david-dm.org/knor-el-snor/integratify.svg)](https://david-dm.org/knor-el-snor/integratify.svg)

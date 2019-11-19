@@ -7,23 +7,22 @@ export interface IGlobalConfiguration {
   dataKey: string; // Key used for every response body containing data
 }
 
-export interface IIntegrationOptions {
+export interface ISendOptions {
+  payload?: string | object;
+  query?: string | object;
+  headers?: object;
+  file?: { name: string, value: any };
+}
+
+export interface IExpectOptions {
   status?: number; // http status
   schema?: Joi.Schema;
   matchObject?: object;
   matchObjectInArray?: object;
   toEqual?: any;
-  payload?: string | object;
-  query?: string | object;
-  headers?: object;
   length?: number;
   spies?: jest.SpyInstance[];
   error?: any;
-  file?: { name: string, value: any };
-
-  // pagination properties
-  // count?: number;
-  // totalCount?: number;
 }
 
 export interface ITestResponse {

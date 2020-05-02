@@ -1,4 +1,4 @@
-import { validateHttpStatus } from '../../build/validator';
+import { validateHttpStatus } from '../validator';
 
 describe('validator', () => {
   describe('validateHttpStatus', () => {

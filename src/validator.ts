@@ -87,7 +87,7 @@ export const validateSpies = (spies: IExpectSpies = []) => {
   spies.map(x => {
     if (_.get(x, 'spy') && _.get(x, 'amount')) {
       const { spy, amount } = x as any;
-      expect(spy).toHaveBeenCalledTimes(amount);
+      return expect(spy).toHaveBeenCalledTimes(amount);
     }
     expect(x).toHaveBeenCalledTimes(1);
   });

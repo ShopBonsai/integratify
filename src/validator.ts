@@ -3,7 +3,15 @@ import { isApiError } from '@icapps/tree-house-errors';
 import * as _ from 'lodash';
 
 import { IExpectSpies } from './interfaces';
-import { validateSchema } from './utils';
+
+/**
+ * Validate data against a joi schema.
+ */
+export const validateSchema = <T>(data: T, schema: Joi.Schema) =>
+  Joi.validate(data, schema, (err, value) => {
+    if (err) throw err;
+    if (!value) throw new Error('no value to check schema');
+  });
 
 /**
  * Validate whether http status matches.

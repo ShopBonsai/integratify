@@ -1,7 +1,7 @@
 import { Request } from 'supertest';
 
 import { IRequestType, IExpectOptions, ITestResponse, IConfiguration } from './interfaces';
-import { log } from './utils';
+import { logRequest } from './logger';
 import {
   validateHttpStatus,
   validateOutputSchema,
@@ -16,23 +16,6 @@ import {
 
 // Number of expect for which errors are being tested to (see validateError function)
 export const NUM_ERROR_CHECKS = 4;
-
-/**
- * Log request for debugging purposes.
- * @param {object} values - Request values needed for logging.
- * @param {string} values.type - Request type (GET, POST, PUT, DELETE).
- * @param values.payload - Request payload.
- * @param values.body - Request response body.
- */
-export const logRequest = ({ type, payload, body }: { type: IRequestType; payload: any; body: any }) => {
-  log(
-    `Method: ${type}\nStatus: ${status}\nPayload:\n ${JSON.stringify(payload, null, 2)}\nResponse:\n ${JSON.stringify(
-      body,
-      null,
-      2,
-    )}`,
-  );
-};
 
 /**
  * Validate request response with provided configuration.
@@ -63,7 +46,7 @@ export const expectRequest = async (
   const { status, body, header } = await req;
 
   // Add logs
-  logRequest({ type, payload, body });
+  logRequest({ type, payload, body, status });
 
   // Run validation
   validateHttpStatus(status, expectedStatus);

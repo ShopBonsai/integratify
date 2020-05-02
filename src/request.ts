@@ -1,7 +1,8 @@
+import { Application } from 'express';
 import * as request from 'supertest';
 
 import { expectRequest } from './expect';
-import { IRequestType, ITestResponse, ISendOptions, IExpectOptions } from './interfaces';
+import { IRequestType, ITestResponse, ISendOptions, IExpectOptions, IConfiguration } from './interfaces';
 
 /**
  * Set properties onto request object.
@@ -42,7 +43,7 @@ export const setReqProps = (req: request.Request, type: IRequestType, opts: ISen
 export const getRequest = (
   type: IRequestType,
   path: string,
-  opts: ISendOptions,
+  opts: ISendOptions & { config: IConfiguration; app: Application },
 ): { expect: (opts: IExpectOptions) => Promise<ITestResponse> } => {
   const {
     app,

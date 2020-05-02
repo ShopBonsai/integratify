@@ -1,5 +1,4 @@
 import * as Joi from '@hapi/joi';
-import { Application } from 'express';
 
 export type IRequestType = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 
@@ -13,8 +12,6 @@ export interface ISendOptions {
   query?: string | object;
   headers?: object;
   file?: { name: string; value: any };
-  config: IConfiguration;
-  app: Application;
 }
 
 export type IExpectSpies = (jest.SpyInstance | { spy: jest.SpyInstance; amount: number })[];

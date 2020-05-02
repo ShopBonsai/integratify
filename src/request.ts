@@ -1,18 +1,20 @@
 import * as request from 'supertest';
 
+import { expectRequest } from './expect';
 import { IRequestType, ITestResponse, ISendOptions, IExpectOptions } from './interfaces';
 import { getConfiguration } from './utils';
-import { expectRequest } from './expect';
 
 /**
- * Returns expect function with created request
+ * Returns expect function with created request.
  */
-export const getRequest = (type: IRequestType, path: string, opts: ISendOptions = {})
-  : { expect: (opts: IExpectOptions) => Promise<ITestResponse> } => {
+export const getRequest = (
+  type: IRequestType,
+  path: string,
+  opts: ISendOptions = {},
+): { expect: (opts: IExpectOptions) => Promise<ITestResponse> } => {
   const { app } = getConfiguration();
 
-  const req = (request(app) as any)[type.toLowerCase()](path)
-    .set('Accept', 'application/json');
+  const req = (request(app) as any)[type.toLowerCase()](path).set('Accept', 'application/json');
 
   // Optional payload/body
   if (type !== 'GET' && opts.payload) {

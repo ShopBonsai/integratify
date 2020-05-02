@@ -7,16 +7,25 @@ import { getConfiguration, log, validateSchema } from './utils';
 export const NUM_ERROR_CHECKS = 4;
 
 /**
- * Validate request response with provided configuration
+ * Validate request response with provided configuration.
  */
-export const expectRequest = async (type: IRequestType, req: request, opts: IExpectOptions & { payload?: string | object } = {})
-  : Promise<ITestResponse> => {
+export const expectRequest = async (
+  type: IRequestType,
+  req: request,
+  opts: IExpectOptions & { payload?: string | object } = {},
+): Promise<ITestResponse> => {
   const { dataKey } = getConfiguration();
   const { status: httpStatus } = opts;
 
   // Execute actual request
   const { status, body, header } = await req;
-  log(`Method: ${type}\nStatus: ${status}\nPayload:\n ${JSON.stringify(opts.payload, null, 2)}\nResponse:\n ${JSON.stringify(body, null, 2)}`);
+  log(
+    `Method: ${type}\nStatus: ${status}\nPayload:\n ${JSON.stringify(
+      opts.payload,
+      null,
+      2,
+    )}\nResponse:\n ${JSON.stringify(body, null, 2)}`,
+  );
 
   // Check HTTP status
   if (httpStatus) {
@@ -49,7 +58,7 @@ export const expectRequest = async (type: IRequestType, req: request, opts: IExp
   }
 
   // Check if spies have been called
-  (opts.spies || []).forEach((spy) => {
+  (opts.spies || []).forEach(spy => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 

@@ -11,7 +11,7 @@ export interface ISendOptions {
   payload?: string | object;
   query?: string | object;
   headers?: object;
-  file?: { name: string, value: any };
+  file?: { name: string; value: any };
 }
 
 export interface IExpectOptions {

@@ -10,7 +10,7 @@ const globalConfiguration: IGlobalConfiguration = {
 
 /**
  * Set global configuration
- * Needs to happen before running tests
+ * Needs to happen before running tests.
  * @param options
  */
 export const setConfiguration = (options: IGlobalConfiguration) => {
@@ -18,7 +18,7 @@ export const setConfiguration = (options: IGlobalConfiguration) => {
 };
 
 /**
- * Get global configuration
+ * Get global configuration.
  */
 export const getConfiguration = () => globalConfiguration;
 
@@ -30,9 +30,10 @@ export const log = (value: string): void => {
 };
 
 /**
- * Validate data against a joi schema
+ * Validate data against a joi schema.
  */
-export const validateSchema = (data: any, schema: Joi.Schema) => Joi.validate(data, schema, (err, value) => {
-  if (err) throw err;
-  if (!value) throw new Error('no value to check schema');
-});
+export const validateSchema = (data: any, schema: Joi.Schema) =>
+  Joi.validate(data, schema, (err, value) => {
+    if (err) throw err;
+    if (!value) throw new Error('no value to check schema');
+  });

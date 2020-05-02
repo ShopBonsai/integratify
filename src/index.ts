@@ -1,11 +1,8 @@
-import { getRequest } from './request';
 import { ISendOptions } from './interfaces';
+import { getRequest } from './request';
 
 export * from './interfaces';
-export {
-  setConfiguration,
-  validateSchema,
-} from './utils';
+export { setConfiguration, validateSchema } from './utils';
 
 export const route = {
   get: (path: string) => ({

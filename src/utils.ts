@@ -1,27 +1,5 @@
 import * as Joi from '@hapi/joi';
 
-import { IGlobalConfiguration } from './interfaces';
-
-// Keep some global configuration
-const globalConfiguration: IGlobalConfiguration = {
-  app: null,
-  dataKey: 'data',
-};
-
-/**
- * Set global configuration
- * Needs to happen before running tests.
- * @param options
- */
-export const setConfiguration = (options: IGlobalConfiguration) => {
-  Object.assign(globalConfiguration, options);
-};
-
-/**
- * Get global configuration.
- */
-export const getConfiguration = () => globalConfiguration;
-
 // Log requests during integration tests
 const DEBUG_MODE_ENABLED = process.argv.includes('--debug');
 

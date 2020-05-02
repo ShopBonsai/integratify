@@ -1,31 +1,57 @@
-import * as request from 'supertest';
+import { Request } from 'supertest';
+import * as _ from 'lodash';
 
 import { IRequestType, IExpectOptions, ITestResponse } from './interfaces';
-import { getConfiguration, log, validateSchema } from './utils';
+import { log, validateSchema } from './utils';
 
 // Number of expect for which errors are being tested to (see validateError function)
 export const NUM_ERROR_CHECKS = 4;
+
+/**
+ * Log request for debugging purposes.
+ * @param {object} values - Request values needed for logging.
+ * @param {string} values.type - Request type (GET, POST, PUT, DELETE).
+ * @param values.payload - Request payload.
+ * @param values.body - Request response body.
+ */
+export const logRequest = ({ type, payload, body }: { type: IRequestType; payload: any; body: any }) => {
+  log(
+    `Method: ${type}\nStatus: ${status}\nPayload:\n ${JSON.stringify(payload, null, 2)}\nResponse:\n ${JSON.stringify(
+      body,
+      null,
+      2,
+    )}`,
+  );
+};
+
+/**
+ *
+ * @param code
+ * @param expectedCode
+ */
+export const validateHttpStatus = (code: number | undefined, expectedCode: number) =>
+  code ? expect(code).toEqual(expectedCode) : null;
+
+
 
 /**
  * Validate request response with provided configuration.
  */
 export const expectRequest = async (
   type: IRequestType,
-  req: request,
+  req: Request,
   opts: IExpectOptions & { payload?: string | object } = {},
 ): Promise<ITestResponse> => {
-  const { dataKey } = getConfiguration();
-  const { status: httpStatus } = opts;
+  // const { dataKey } = getConfiguration();
+  const { status: httpStatus, payload } = opts;
 
   // Execute actual request
   const { status, body, header } = await req;
-  log(
-    `Method: ${type}\nStatus: ${status}\nPayload:\n ${JSON.stringify(
-      opts.payload,
-      null,
-      2,
-    )}\nResponse:\n ${JSON.stringify(body, null, 2)}`,
-  );
+
+  // Add logs
+  logRequest({ type, payload, body });
+
+  validateHttpStatus();
 
   // Check HTTP status
   if (httpStatus) {
@@ -59,6 +85,7 @@ export const expectRequest = async (
 
   // Check if spies have been called
   (opts.spies || []).forEach(spy => {
+    // if(_.)console.log();
     expect(spy).toHaveBeenCalledTimes(1);
   });
 

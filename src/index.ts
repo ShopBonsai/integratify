@@ -5,6 +5,7 @@ import { getRequest } from './request';
 
 export * from './interfaces';
 export { validateSchema } from './validator';
+export { NUM_ERROR_CHECKS } from './expect';
 
 export const integratify = (app: Application, config: IConfiguration = {}) => ({
   get: (path: string) => ({

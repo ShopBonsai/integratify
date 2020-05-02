@@ -109,7 +109,7 @@ export const validateError = <T>(values: T, error: Error | undefined) => {
  * @param values - Response values.
  * @param {object[]} paths - List of path objects.
  */
-export const validatePaths = <T>(values: T, paths: { [path: string]: any }[] = []) => {
+export const validatePaths = <T>(values: T, paths: { [path: string]: any } = {}) => {
   Object.keys(paths).map(key => {
     expect(_.get(values, key)).toEqual(paths[key]);
   });

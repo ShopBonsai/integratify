@@ -25,7 +25,7 @@ export interface IExpectOptions {
   length?: number;
   spies?: IExpectSpies;
   error?: Error;
-  paths?: { [path: string]: number }[];
+  paths?: { [path: string]: any };
 }
 
 export interface ITestResponse {

@@ -84,11 +84,12 @@ export const validateOutputMatchArray = <T>(values: T, matchObjectInArray: objec
  * @param {object[]} spies - List of spies.
  */
 export const validateSpies = (spies: IExpectSpies = []) => {
-  spies.map(spy => {
-    if (_.get(spy, 'spy') && _.get(spy, 'amount')) {
-      expect(spy).toHaveBeenCalledTimes((spy as any).amount);
+  spies.map(x => {
+    if (_.get(x, 'spy') && _.get(x, 'amount')) {
+      const { spy, amount } = x as any;
+      expect(spy).toHaveBeenCalledTimes(amount);
     }
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(x).toHaveBeenCalledTimes(1);
   });
 };
 

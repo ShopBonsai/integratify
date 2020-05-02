@@ -1,8 +1,18 @@
 import { Request } from 'supertest';
-import * as _ from 'lodash';
 
-import { IRequestType, IExpectOptions, ITestResponse } from './interfaces';
-import { log, validateSchema } from './utils';
+import { IRequestType, IExpectOptions, ITestResponse, IConfiguration } from './interfaces';
+import { log } from './utils';
+import {
+  validateHttpStatus,
+  validateOutputSchema,
+  validateOutputMatch,
+  validateOutputEqual,
+  validateOutputMatchArray,
+  validateOutputLength,
+  validateSpies,
+  validateError,
+  validatePaths,
+} from './validator';
 
 // Number of expect for which errors are being tested to (see validateError function)
 export const NUM_ERROR_CHECKS = 4;
@@ -25,25 +35,29 @@ export const logRequest = ({ type, payload, body }: { type: IRequestType; payloa
 };
 
 /**
- *
- * @param code
- * @param expectedCode
- */
-export const validateHttpStatus = (code: number | undefined, expectedCode: number) =>
-  code ? expect(code).toEqual(expectedCode) : null;
-
-
-
-/**
  * Validate request response with provided configuration.
+ * @param {string} type - Request type (GET, POST, PUT, DELETE).
+ * @param {object} req - Supertest request object.
+ * @param {object} opts - Options describing what to expect.
  */
 export const expectRequest = async (
   type: IRequestType,
   req: Request,
-  opts: IExpectOptions & { payload?: string | object } = {},
+  opts: IExpectOptions & { payload?: string | object; config: IConfiguration },
 ): Promise<ITestResponse> => {
-  // const { dataKey } = getConfiguration();
-  const { status: httpStatus, payload } = opts;
+  const {
+    status: expectedStatus,
+    payload,
+    length,
+    schema,
+    matchObject,
+    matchObjectInArray,
+    toEqual,
+    spies,
+    error,
+    paths,
+    config: { dataPath } = {},
+  } = opts;
 
   // Execute actual request
   const { status, body, header } = await req;
@@ -51,54 +65,17 @@ export const expectRequest = async (
   // Add logs
   logRequest({ type, payload, body });
 
-  validateHttpStatus();
+  // Run validation
+  validateHttpStatus(status, expectedStatus);
+  validateOutputLength(body, length, dataPath);
+  validateOutputSchema(body, schema);
+  validateOutputEqual(body, toEqual, dataPath);
+  validateOutputMatch(body, matchObject, dataPath);
+  validateOutputMatchArray(body, matchObjectInArray, dataPath);
+  validatePaths(body, paths);
+  validateError(body, error);
+  validateSpies(spies);
 
-  // Check HTTP status
-  if (httpStatus) {
-    expect(status).toEqual(httpStatus);
-  }
-
-  // Optional length
-  if (opts.length) {
-    expect(body[dataKey].length).toEqual(opts.length);
-  }
-
-  // Optional Joi schema validation
-  if (opts.schema) {
-    validateSchema(body, opts.schema);
-  }
-
-  // Optional data object match
-  if (opts.matchObject) {
-    expect(body[dataKey]).toMatchObject(opts.matchObject);
-  }
-
-  // Optional actual match
-  if (opts.toEqual) {
-    expect(body[dataKey]).toEqual(opts.toEqual);
-  }
-
-  // Optional object in array match
-  if (opts.matchObjectInArray) {
-    expect(body[dataKey]).toMatchObjectInArray(opts.matchObjectInArray);
-  }
-
-  // Check if spies have been called
-  (opts.spies || []).forEach(spy => {
-    // if(_.)console.log();
-    expect(spy).toHaveBeenCalledTimes(1);
-  });
-
-  // Optional pagination
-  // TODO: Add flexible pagination support
-  // if (opts.count) expect(body.meta.count).toEqual(opts.count);
-  // if (opts.totalCount) expect(body.meta.totalCount).toEqual(opts.totalCount);
-
-  // Optional error response
-  // TODO: Add flexible errors support
-  if (opts.error) {
-    expect(body.errors[0].code).toEqual(opts.error.code);
-  }
-
+  // Return request results
   return { status, body, header };
 };

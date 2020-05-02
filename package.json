@@ -10,16 +10,16 @@
     "start": "npm run build && node build/index.js",
     "lint": "npx eslint . --ext .ts --ext .tsx",
     "lint:fix": "npm run lint -- --fix",
-    "test": "jest --forceExit",
-    "test:coverage": "jest --coverage --collectCoverageFrom=src/**/*.ts --forceExit",
+    "test": "jest --maxWorkers=1 --detectOpenHandles",
+    "test:coverage": "npm run test -- --coverage --collectCoverageFrom=src/**/*.ts",
     "test:watch": "jest --watchAll",
-    "pretest": "npm run build",
     "prepare": "npm run build",
     "release": "node_modules/np/source/cli.js --no-cleanup",
     "git:clean": "git branch --merged | egrep -v \"(^\\*|master|staging|develop)\" | xargs git branch -d",
     "git:clean-remote": "git remote prune origin"
   },
   "dependencies": {
+    "@icapps/tree-house-errors": "2.1.1",
     "@hapi/joi": "~15.1.1",
     "jest": "~25.4.0",
     "supertest": "~4.0.2"

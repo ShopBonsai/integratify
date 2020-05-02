@@ -4,7 +4,7 @@ import { ISendOptions, IConfiguration } from './interfaces';
 import { getRequest } from './request';
 
 export * from './interfaces';
-export { setConfiguration, validateSchema } from './utils';
+export { validateSchema } from './utils';
 
 export const integratify = (app: Application, config: IConfiguration = {}) => ({
   get: (path: string) => ({

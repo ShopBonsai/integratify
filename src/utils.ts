@@ -10,7 +10,7 @@ export const log = (value: string): void => {
 /**
  * Validate data against a joi schema.
  */
-export const validateSchema = (data: any, schema: Joi.Schema) =>
+export const validateSchema = <T>(data: T, schema: Joi.Schema) =>
   Joi.validate(data, schema, (err, value) => {
     if (err) throw err;
     if (!value) throw new Error('no value to check schema');

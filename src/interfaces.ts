@@ -4,8 +4,8 @@ import { Application } from 'express';
 export type IRequestType = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 
 export interface IConfiguration {
-  prefix?: string;
-  // dataKey: string; // Key used for every response body containing data
+  prefix?: string; // Url prefix
+  dataPath?: string; // Key used for every response body containing data (needed for pagination results)
 }
 
 export interface ISendOptions {
@@ -17,6 +17,8 @@ export interface ISendOptions {
   app: Application;
 }
 
+export type IExpectSpies = (jest.SpyInstance | { spy: jest.SpyInstance; amount: number })[];
+
 export interface IExpectOptions {
   status?: number; // http status
   schema?: Joi.Schema;
@@ -24,8 +26,10 @@ export interface IExpectOptions {
   matchObjectInArray?: object;
   toEqual?: any;
   length?: number;
-  spies?: (jest.SpyInstance | { spy: jest.SpyInstance; amount: number })[];
-  error?: any;
+  spies?: IExpectSpies;
+  error?: Error;
+  paths?: { [path: string]: number }[];
+  config: IConfiguration;
 }
 
 export interface ITestResponse {

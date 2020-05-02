@@ -20,7 +20,7 @@ export interface ISendOptions {
 export type IExpectSpies = (jest.SpyInstance | { spy: jest.SpyInstance; amount: number })[];
 
 export interface IExpectOptions {
-  status?: number; // http status
+  status?: number;
   schema?: Joi.Schema;
   matchObject?: object;
   matchObjectInArray?: object;
@@ -29,7 +29,6 @@ export interface IExpectOptions {
   spies?: IExpectSpies;
   error?: Error;
   paths?: { [path: string]: number }[];
-  config: IConfiguration;
 }
 
 export interface ITestResponse {

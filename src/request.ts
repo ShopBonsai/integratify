@@ -57,6 +57,6 @@ export const getRequest = (
   setReqProps(req, type, opts);
 
   return {
-    expect: (opts: IExpectOptions) => expectRequest(type, req, opts),
+    expect: (options: IExpectOptions) => expectRequest(type, req, { ...opts, ...options }),
   };
 };

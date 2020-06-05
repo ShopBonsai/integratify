@@ -1,5 +1,5 @@
 import * as Joi from '@hapi/joi';
-import { isApiError } from '@icapps/tree-house-errors';
+import { isApiError } from '@tree-house/errors';
 import * as _ from 'lodash';
 
 import { IExpectSpies } from './interfaces';

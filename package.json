@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@hapi/joi": "~15.1.1",
-    "@icapps/tree-house-errors": "2.1.1",
+    "@tree-house/errors": "1.1.2",
     "jest": "~25.5.3",
     "supertest": "~4.0.2"
   },

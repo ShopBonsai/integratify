@@ -44,6 +44,6 @@ jobs:
     - name: Install dependencies
       run: yarn
 
-    - run: yarn versions:publish
+    - run: yarn publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

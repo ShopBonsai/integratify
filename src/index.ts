@@ -1,26 +1,10 @@
-import { getRequest } from './request';
-import { ISendOptions } from './interfaces';
+import { integratify } from './integratify';
 
-export * from './interfaces';
-export {
-  setConfiguration,
-  validateSchema,
-} from './utils';
+export * from './common/interfaces';
+export { NUM_ERROR_CHECKS } from './utils/expect';
 
-export const route = {
-  get: (path: string) => ({
-    send: (opts?: ISendOptions) => getRequest('GET', path, opts),
-  }),
-  post: (path: string) => ({
-    send: (opts?: ISendOptions) => getRequest('POST', path, opts),
-  }),
-  put: (path: string) => ({
-    send: (opts?: ISendOptions) => getRequest('PUT', path, opts),
-  }),
-  patch: (path: string) => ({
-    send: (opts?: ISendOptions) => getRequest('PATCH', path, opts),
-  }),
-  delete: (path: string) => ({
-    send: (opts?: ISendOptions) => getRequest('DELETE', path, opts),
-  }),
-};
+export { setGlobalConfig as setConfiguration } from './config/global';
+
+// Export named & default main integratify function
+export { integratify };
+export default integratify;

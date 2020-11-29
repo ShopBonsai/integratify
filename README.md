@@ -138,6 +138,10 @@ Available Options
 
 > Error support for [@tree-house/errors](https://github.com/knor-el-snor/tree-house/tree/master/packages/errors).
 
+## To Do
+
+Unfortunately no time could be found yet to add automated tests. This is the first thing planned now we have a stable version 3 released.
+
 ## Tests
 
 You can run `npm run test` to run all tests

@@ -69,7 +69,7 @@ module.exports = {
         ignoreParameters: true,
       },
     ],
-    "@typescript-eslint/interface-name-prefix": ["error", "always"],
+    "@typescript-eslint/ban-types": "warn",
     "sonarjs/no-duplicate-string": "off",
     "sonarjs/cognitive-complexity": ["error", 7],
     "unicorn/filename-case": "off",

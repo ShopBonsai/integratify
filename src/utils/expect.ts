@@ -1,6 +1,6 @@
 import { Request } from 'supertest';
 
-import { IRequestType, IExpectOptions, ITestResponse, IConfiguration } from './interfaces';
+import { IRequestType, IExpectOptions, ITestResponse, IConfiguration } from '../common/interfaces';
 import { logRequest } from './logger';
 import {
   validateHttpStatus,

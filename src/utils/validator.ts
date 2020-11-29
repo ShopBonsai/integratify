@@ -2,10 +2,10 @@ import * as Joi from '@hapi/joi';
 import { isApiError } from '@tree-house/errors';
 import * as _ from 'lodash';
 
-import { IExpectSpies } from './interfaces';
+import { IExpectSpies } from '../common/interfaces';
 
 /**
- * Validate data against a joi schema.
+ * Validates data against a joi schema.
  */
 export const validateSchema = <T>(data: T, schema: Joi.Schema) =>
   Joi.validate(data, schema, (err, value) => {
@@ -14,7 +14,7 @@ export const validateSchema = <T>(data: T, schema: Joi.Schema) =>
   });
 
 /**
- * Validate whether http status matches.
+ * Validate swhether http status matches.
  * @param {number} status - Http status response.
  * @param {number} expectedStatus - Expected http status.
  */
@@ -22,7 +22,7 @@ export const validateHttpStatus = (status: number, expectedStatus: number | unde
   expectedStatus ? expect(status).toEqual(expectedStatus) : null;
 
 /**
- * Validate whether output matches Joi Schema.
+ * Validates whether output matches Joi Schema.
  * @param values - Response values.
  * @param {object} expectedSchema - Joi schema.
  */
@@ -98,9 +98,11 @@ export const validateSpies = (spies: IExpectSpies = []) => {
  * @param values - Response values.
  * @param {object} error - Error object.
  */
-export const validateError = <T>(values: T, error: Error | undefined) => {
+export const validateError = <T>(values: T, error: Error | undefined): void => {
   if (error) {
-    if (isApiError(error)) return expect(values['errors'][0].code).toEqual(error.code);
+    if (isApiError(error)) {
+      return expect(values['errors'][0].code).toEqual(error.code);
+    }
     return expect(values).toEqual(error);
   }
 };

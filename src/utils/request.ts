@@ -1,8 +1,8 @@
 import { Application } from 'express';
 import * as request from 'supertest';
 
+import { IRequestType, ITestResponse, ISendOptions, IExpectOptions, IConfiguration } from '../common/interfaces';
 import { expectRequest } from './expect';
-import { IRequestType, ITestResponse, ISendOptions, IExpectOptions, IConfiguration } from './interfaces';
 
 /**
  * Set properties onto request object.

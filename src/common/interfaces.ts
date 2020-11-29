@@ -5,6 +5,7 @@ export type IRequestType = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 export interface IConfiguration {
   prefix?: string; // Url prefix
   dataPath?: string; // Key used for every response body containing data (needed for pagination results)
+  schemaValidator?: <T, K>(data: T, schema: K) => void;
 }
 
 export interface ISendOptions {

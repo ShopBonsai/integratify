@@ -1,4 +1,4 @@
-import { IRequestType } from './interfaces';
+import { IRequestType } from '../common/interfaces';
 
 // Log requests during integration tests
 const DEBUG_MODE_ENABLED = process.argv.includes('--debug');

@@ -1,17 +1,7 @@
-import * as Joi from '@hapi/joi';
 import { isApiError } from '@tree-house/errors';
 import * as _ from 'lodash';
 
-import { IExpectSpies } from '../common/interfaces';
-
-/**
- * Validates data against a joi schema.
- */
-export const validateSchema = <T>(data: T, schema: Joi.Schema) =>
-  Joi.validate(data, schema, (err, value) => {
-    if (err) throw err;
-    if (!value) throw new Error('no value to check schema');
-  });
+import { IExpectSpies, ISchemaValidator } from '../common/interfaces';
 
 /**
  * Validate swhether http status matches.
@@ -22,12 +12,21 @@ export const validateHttpStatus = (status: number, expectedStatus: number | unde
   expectedStatus ? expect(status).toEqual(expectedStatus) : null;
 
 /**
- * Validates whether output matches Joi Schema.
+ * Validates whether output matches a specific Schema.
  * @param values - Response values.
- * @param {object} expectedSchema - Joi schema.
+ * @param {object} expectedSchema - Any schema.
+ * @param {Function} schemaValidator - Schema validation function.
  */
-export const validateOutputSchema = <T>(values: T, expectedSchema: Joi.Schema | undefined) =>
-  expectedSchema ? validateSchema(values, expectedSchema) : null;
+export const validateOutputSchema = <T>(
+  values: T,
+  expectedSchema: any | undefined,
+  schemaValidator: ISchemaValidator | undefined,
+) => {
+  if (!schemaValidator) {
+    throw new Error('Make sure to pass along a schema validation function to integratify!');
+  }
+  return expectedSchema ? schemaValidator(values, expectedSchema) : null;
+};
 
 /**
  * Validate whether output has specified length.

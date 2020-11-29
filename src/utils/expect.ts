@@ -39,7 +39,7 @@ export const expectRequest = async (
     spies,
     error,
     paths,
-    config: { dataPath } = {},
+    config: { dataPath, schemaValidator } = {},
   } = opts;
 
   // Execute actual request
@@ -51,7 +51,7 @@ export const expectRequest = async (
   // Run validation
   validateHttpStatus(status, expectedStatus);
   validateOutputLength(body, length, dataPath);
-  validateOutputSchema(body, schema);
+  validateOutputSchema(body, schema, schemaValidator);
   validateOutputEqual(body, toEqual, dataPath);
   validateOutputMatch(body, matchObject, dataPath);
   validateOutputMatchArray(body, matchObjectInArray, dataPath);

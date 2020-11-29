@@ -1,6 +1,7 @@
 import { Request } from 'supertest';
 
 import { IRequestType, IExpectOptions, ITestResponse, IConfiguration } from '../common/interfaces';
+import { getGlobalConfig } from '../config/global';
 import { logRequest } from './logger';
 import {
   validateHttpStatus,
@@ -39,8 +40,10 @@ export const expectRequest = async (
     spies,
     error,
     paths,
-    config: { dataPath, schemaValidator } = {},
+    config: { dataPath: localDataPath, schemaValidator } = {},
   } = opts;
+  // Local dataPath first, then global
+  const dataPath = localDataPath || getGlobalConfig().dataPath;
 
   // Execute actual request
   const { status, body, header } = await req;

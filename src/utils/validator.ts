@@ -2,6 +2,7 @@ import { isApiError } from '@tree-house/errors';
 import * as _ from 'lodash';
 
 import { IExpectSpies, ISchemaValidator } from '../common/interfaces';
+import { getGlobalConfig } from '../config/global';
 
 /**
  * Validate swhether http status matches.
@@ -22,10 +23,12 @@ export const validateOutputSchema = <T>(
   expectedSchema: any | undefined,
   schemaValidator: ISchemaValidator | undefined,
 ) => {
-  if (!schemaValidator) {
-    throw new Error('Make sure to pass along a schema validation function to integratify!');
+  // Local validator first, then global
+  const validator = schemaValidator || getGlobalConfig().schemaValidator;
+  if (!validator) {
+    throw new Error('Make sure to pass along a schema validation function to integratify or set one globally!');
   }
-  return expectedSchema ? schemaValidator(values, expectedSchema) : null;
+  return expectedSchema ? validator(values, expectedSchema) : null;
 };
 
 /**

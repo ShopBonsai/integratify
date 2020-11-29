@@ -1,6 +1,6 @@
 {
   "name": "integratify",
-  "version": "2.0.6-1",
+  "version": "2.0.6-2",
   "description": "Make integration testing easy",
   "homepage": "https://github.com/knor-el-snor/integratify#readme",
   "bugs": {
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/knor-el-snor/integratify.git"
   },
   "license": "ISC",
-  "author": "",
+  "author": "Brent Van Geertruy <brentvangeertruy@outlook.com>",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {

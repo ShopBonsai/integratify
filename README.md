@@ -29,6 +29,9 @@ const integratify = require('integratify');
 import * as integratify from 'integratify';
 ```
 
+### Global configuration
+
+
 ### Initialize test runner
 
 ```typescript

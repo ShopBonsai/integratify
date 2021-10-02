@@ -1,14 +1,14 @@
 {
   "name": "integratify",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Make integration testing easy",
-  "homepage": "https://github.com/knor-el-snor/integratify#readme",
+  "homepage": "https://github.com/ShopBonsai/integratify#readme",
   "bugs": {
-    "url": "https://github.com/knor-el-snor/integratify/issues"
+    "url": "https://github.com/ShopBonsai/integratify/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/knor-el-snor/integratify.git"
+    "url": "git+https://github.com/ShopBonsai/integratify.git"
   },
   "license": "ISC",
   "author": "Brent Van Geertruy <brentvangeertruy@outlook.com>",

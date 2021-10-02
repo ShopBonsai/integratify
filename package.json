@@ -11,7 +11,6 @@
     "url": "git+https://github.com/ShopBonsai/integratify.git"
   },
   "license": "ISC",
-  "author": "Brent Van Geertruy <brentvangeertruy@outlook.com>",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {

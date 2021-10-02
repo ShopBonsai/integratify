@@ -7,7 +7,6 @@ module.exports = {
     "plugin:fp/recommended",
     "plugin:unicorn/recommended",
     "prettier",
-    "prettier/@typescript-eslint",
     "plugin:import/typescript",
     "plugin:sonarjs/recommended",
   ],

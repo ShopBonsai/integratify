@@ -3,7 +3,7 @@
 Make Node.js integration testing easy!
 
 [![npm version](https://badge.fury.io/js/integratify.svg)](https://badge.fury.io/js/integratify)
-[![Dependencies](https://david-dm.org/knor-el-snor/integratify.svg)](https://david-dm.org/knor-el-snor/integratify.svg)
+[![Dependencies](https://david-dm.org/ShopBonsai/integratify.svg)](https://david-dm.org/ShopBonsai/integratify.svg)
 ![API Continuous Integration](https://github.com/ShopBonsai/integratify/workflows/API%20Continuous%20Integration/badge.svg)
 
 ## Installation

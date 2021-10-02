@@ -4,7 +4,7 @@ Make Node.js integration testing easy!
 
 [![npm version](https://badge.fury.io/js/integratify.svg)](https://badge.fury.io/js/integratify)
 [![Dependencies](https://david-dm.org/knor-el-snor/integratify.svg)](https://david-dm.org/knor-el-snor/integratify.svg)
-![API Continuous Integration](https://github.com/knor-el-snor/integratify/workflows/API%20Continuous%20Integration/badge.svg)
+![API Continuous Integration](https://github.com/ShopBonsai/integratify/workflows/API%20Continuous%20Integration/badge.svg)
 
 ## Installation
 
@@ -136,7 +136,7 @@ Available Options
 | error              | Error  | Potential error to validate against            | Javascript Error                                             |
 | paths              | object | Validate custom return keys besides `dataPath` | `{'meta.count': 1}`                                          |
 
-> Error support for [@tree-house/errors](https://github.com/knor-el-snor/tree-house/tree/master/packages/errors).
+> Error support for [@tree-house/errors](https://github.com/ShopBonsai/tree-house/tree/master/packages/errors).
 
 ## To Do
 
@@ -149,7 +149,7 @@ You can run `npm run test:coverage` to run all tests with coverage report
 
 ## Authors
 
-See the list of [contributors](https://github.com/knor-el-snor/integratify/contributors) who participated in this project.
+See the list of [contributors](https://github.com/ShopBonsai/integratify/contributors) who participated in this project.
 
 ## License
 

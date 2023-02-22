@@ -1,6 +1,6 @@
 {
   "name": "integratify",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "Make integration testing easy",
   "homepage": "https://github.com/ShopBonsai/integratify#readme",
   "bugs": {
@@ -36,12 +36,12 @@
     }
   },
   "dependencies": {
-    "@tree-house/errors": "2.0.0",
-    "supertest": "~6.1.6"
+    "@tree-house/errors": "2.5.0",
+    "supertest": "~6.3.3"
   },
   "devDependencies": {
     "@types/express": "4.17.13",
-    "@types/jest": "~27.0.2",
+    "@types/jest": "~29.4.0",
     "@types/lodash": "4.14.175",
     "@types/supertest": "2.0.11",
     "@typescript-eslint/eslint-plugin": "4.32.0",
@@ -57,17 +57,17 @@
     "eslint-plugin-sonarjs": "0.10.0",
     "eslint-plugin-unicorn": "36.0.0",
     "express": "4.17.1",
-    "husky": "~7.0.2",
-    "jest": "~27.2.4",
-    "np": "~7.5.0",
-    "pinst": "^2.1.6",
+    "husky": "~8.0.3",
+    "jest": "~29.4.3",
+    "np": "~7.6.3",
+    "pinst": "^3.0.0",
     "prettier": "1.19.1",
-    "rimraf": "~3.0.0",
-    "ts-jest": "~27.0.5",
+    "rimraf": "~4.1.2",
+    "ts-jest": "~29.0.5",
     "typescript": "4.4.3"
   },
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=14.0.0"
   },
-  "packageManager": "yarn@3.1.0-rc.8"
+  "packageManager": "yarn@3.4.1"
 }

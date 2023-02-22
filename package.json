@@ -1,6 +1,6 @@
 {
   "name": "integratify",
-  "version": "4.1.0",
+  "version": "5.0.0",
   "description": "Make integration testing easy",
   "homepage": "https://github.com/ShopBonsai/integratify#readme",
   "bugs": {
@@ -67,7 +67,7 @@
     "typescript": "4.4.3"
   },
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=14.0.0"
   },
   "packageManager": "yarn@3.4.1"
 }

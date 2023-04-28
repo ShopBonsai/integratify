@@ -54,7 +54,12 @@ export const expectRequest = async (
   // Run validation
   validateHttpStatus(status, expectedStatus);
   validateOutputLength(body, length, dataPath);
-  validateOutputSchema(body, schema, schemaValidator);
+
+  // If output schema needs to be validated, run validator function
+  if (schema) {
+    validateOutputSchema(body, schema, schemaValidator);
+  }
+
   validateOutputEqual(body, toEqual, dataPath);
   validateOutputMatch(body, matchObject, dataPath);
   validateOutputMatchArray(body, matchObjectInArray, dataPath);

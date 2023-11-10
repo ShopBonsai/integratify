@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.0.0] - 2023-11-09
+
+### Breaking Changes
+
+- Dropped support for Node 14 & 16. Minimum required version is Node 18
+
+### Changed
+
+- Upgraded internal dependencies to latest versions incl. Typescript 4 to 5
+- Upgrade `@tree-house/errors` v2.5.0 to v3.0.0
+
 ## [5.1.0] - 2023-04-27
 
 ### Changed

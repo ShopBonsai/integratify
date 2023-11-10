@@ -86,7 +86,7 @@ export const validateOutputMatchArray = <T>(values: T, matchObjectInArray: objec
  * @param {object[]} spies - List of spies.
  */
 export const validateSpies = (spies: IExpectSpies = []) => {
-  spies.map(x => {
+  spies.map((x) => {
     if (_.get(x, 'spy') && _.get(x, 'amount')) {
       const { spy, amount } = x as any;
       return expect(spy).toHaveBeenCalledTimes(amount);
@@ -115,7 +115,7 @@ export const validateError = <T>(values: T, error: Error | undefined): void => {
  * @param {object[]} paths - List of path objects.
  */
 export const validatePaths = <T>(values: T, paths: { [path: string]: any } = {}) => {
-  Object.keys(paths).map(key => {
+  Object.keys(paths).map((key) => {
     expect(_.get(values, key)).toEqual(paths[key]);
   });
 };

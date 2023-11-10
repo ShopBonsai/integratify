@@ -78,7 +78,6 @@ module.exports = {
     "unicorn/catch-error-name": "off",
     "unicorn/no-null": "off",
     "jsdoc/check-alignment": "warn",
-    "jsdoc/check-examples": "warn",
     "jsdoc/check-indentation": "warn",
     "jsdoc/check-param-names": "warn",
     "jsdoc/check-syntax": "warn",

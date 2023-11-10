@@ -13,6 +13,7 @@ const log = (value: string): void => {
  * @param {string} values.type - Request type (GET, POST, PUT, DELETE).
  * @param values.payload - Request payload.
  * @param values.body - Request response body.
+ * @param values.status - Request response status.
  */
 export const logRequest = ({
   type,
